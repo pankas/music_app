@@ -13,7 +13,7 @@ export default class Control extends Component {
         let likeClass = "button like ";
         let heartClass = "fa fa-fw ";
         if (!this.props.isLiked) {
-          heartClass += "fa-heart-o";
+          heartClass += "fa-heart-o";	
         } else {
           likeClass += "is-liked";
           heartClass += "fa-heart";

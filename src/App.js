@@ -3,7 +3,7 @@ import './App.css';
 import Playlist from './Playlist';
 import Timestamp from './Timestamp';
 import Controls from './Control';
-import {albumList} from './AlbumList';
+import {albumList,artist} from './AlbumList';
 
 class App extends React.Component {
   constructor(props, defaultProps) {
@@ -18,7 +18,7 @@ class App extends React.Component {
       sliding: 0,
       likedTracks: [],
       viewMode: "player",
-      tracks:[],
+      tracks:albumList[0].track,
       albumTitle:''
     }
     
@@ -131,8 +131,8 @@ class App extends React.Component {
   }
 
     componentDidMount(){
-      this.setState({tracks:albumList})
-      console.log('hghg',this.state.albumTitle)
+      // this.setState({tracks:albumList})
+      console.log('hghg',this.state.tracks[this.state.currentTrack])
     }
 
   render(){
@@ -175,17 +175,22 @@ class App extends React.Component {
             <h1>
             </h1>
           </div>
-          <div className="col-sm-6" >
-          <ul className="list-group rotate" style={{ display: "flex", justifyContent: "center",listStyle:"none" }} >
-                        <li>LAWRIE ACTION <i class="fa fa-circle">VOCALIST</i></li>
-                        <li>CHARLES JIMMY <i class="fa fa-circle">GUITAR</i></li>
-                        <li>CURT SHEARD <i class="fa fa-circle">BASS</i></li>
-                        <li>CADE RYKER <i class="fa fa-circle">DRUMS</i></li>
-                        <li>TOMMIE BRENDON <i class="fa fa-circle">ELECTRONICS</i></li>        
-                    </ul>
-            <h2 style={{marginTop:"50%",textAlign:"center"}}>Meet Our Band
+          <div className="col-sm-6" style={{paddingTop:"15%"}}>
+          <table className="table table-hover table-borderless rotate" style={{marginLeft:"20%",marginBottom:"15%"}} cellPadding="20">
+                      <tbody>
+                        {artist.map((list,i)=>{
+                          return(
+                            <tr>
+                            <td>{list.name}</td>
+                            <td><i class="fa fa-circle"></i></td>
+                            <td>{list.skills}</td>
+                          </tr>
+                        )})}
+                      </tbody>
+                    </table> 
+            <h2 style={{marginTop:"8%",textAlign:"center"}}>Meet Our Band
             </h2>
-            <p>
+            <p style={{marginBottom:"25%",textAlign:"center"}}>
             Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
             </p>
           </div>
@@ -214,7 +219,7 @@ class App extends React.Component {
             {/* <p className="title">{currentTrack}</p> */}
             {/* <p className="subtitle">{currentTrack}</p> */}
             <Controls isPlaying={this.state.playStatus} isLiked={isLiked} togglePlay={this.togglePlay} nextTrack={this.nextTrack} prevTrack={this.prevTrack} likeTrack={this.likeTrack} />
-            <Timestamp duration={currentTrack} current={this.state.currentTime} />
+            <Timestamp duration={currentTrack.duration} current={this.state.currentTime} />
           </section>
           
         </article>
@@ -231,7 +236,7 @@ class App extends React.Component {
                   <div className="card card-transparent"  style={{border:"none"}}>
                  <h2> DISCOGRAHY</h2>
                     <div className="card-block p-0">
-                     <table className="table table-hover" cellpadding="20">
+                     <table className="table table-hover table-borderless" cellpadding="20">
                       <tbody>
                         {albumList.map((list,i)=>{
                           return(
