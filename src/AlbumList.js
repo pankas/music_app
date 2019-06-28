@@ -171,18 +171,23 @@ export const albumList = [{
 
 export const artist= [{
     name:'LAWRIE ACTION',
-    skills:'VOCALIST'
+    skills:'VOCALIST',
+    role:'support'
 },{
     name:'CHARLES JIMMY',
-    skills:'GUITAR'
+    skills:'GUITAR',
+    role:'support'
 },{
     name:'CURT SHEARED',
-    skills:'BASS'
+    skills:'BASS',
+    role:'lead'
 },
 {
     name:'KATE RYKER',
-    skills:'DRUMS'
+    skills:'DRUMS',
+    role:'support'
 },{
     name:'TOMIE BRENDON',
-    skills:'ELECTRONICS'
+    skills:'ELECTRONICS',
+    role:'support'
 }]

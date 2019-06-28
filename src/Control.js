@@ -9,16 +9,6 @@ export default class Control extends Component {
         } else {
           playClass += "fa-pause";
         }
-        
-        let likeClass = "button like ";
-        let heartClass = "fa fa-fw ";
-        if (!this.props.isLiked) {
-          heartClass += "fa-heart-o";	
-        } else {
-          likeClass += "is-liked";
-          heartClass += "fa-heart";
-        }
-        
         return(
           <div className="controls">
             <button type="button" className="button prev" onClick={this.props.prevTrack}>
